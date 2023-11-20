@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Dicee</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower|Lobster" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="container">
+      <h1 id="res">Roll the Dice</h1>
+
+      <div class="dice">
+        <p>Player 1</p>
+        <img id="img1" class="img1" src="images/dice6.png" alt="dice">
+      </div>
+
+      <div class="dice">
+        <p>Player 2</p>
+        <img id="img2" class="img2" src="images/dice2.png">
+      </div>
+
+    </div>
+    <button id="roll_btn" class="btn">Roll</button>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var roll_btn = document.getElementById("roll_btn");
+
+        roll_btn.addEventListener("click", function(e) {
+          var randomno1 = Math.floor(Math.random() * 6) + 1;
+          var randomimg1 = "images/dice" + randomno1 + ".png";
+          var img1 = document.getElementById("img1");
+          img1.setAttribute("src", randomimg1);
+
+          var randomno2 = Math.floor(Math.random() * 6) + 1;
+          var randomimg2 = "images/dice" + randomno2 + ".png";
+          var img2 = document.getElementById("img2");
+          img2.setAttribute("src", randomimg2);
+          var res=document.getElementById("res");
+          if(randomno1>randomno2){
+            res.innerHTML="Player 1 won"
+          }
+          else if(randomno1<randomno2){
+            res.innerHTML="Player 2 won"
+          }
+          else{
+            res.innerHTML="draw"
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
